@@ -28,7 +28,7 @@ if __name__=="__main__":
     max_accu = 0
     max_f1 = 0
     temp = [0,0,0,0]
-    cols = ['1', '2', '3']
+    cols = ['1', '2', '3', '4', '5', '6']
     for m in range(3,5):
         pca = PCA(n_components=m)
         arr_pca = pca.fit_transform(arr_min_max)
@@ -48,7 +48,7 @@ if __name__=="__main__":
                         max_accu = metrics.accuracy_score(Y_test, Y_pred)
                         max_f1 = metrics.f1_score(Y_test, Y_pred, average="macro")
                         dot_data = tree.export_graphviz(clas
-                                        ,feature_names= cols
+                                        ,feature_names= cols[:m]
                                         ,class_names=["前期", "中期", "后期"]
                                         ,filled=True
                                         ,rounded=True
